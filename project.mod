@@ -12,7 +12,7 @@ param p{W};                  															#Cost of opening warehouse w        
 param d{I,Year,Store};                   												#demand for shoe i in year e in month m in store s         xxx
 param c{K};                  															#cost of each raw material k                               xxx
 param a{I,K} default 0;         												        #Amount of the kth raw material for shoe i                 xxx
-param D{i in I} := sum{year in Year, store in Store} d[i,year,store]*(1/7);       																		#Demand for shoe i                                         xxx
+param D{i in I} := sum{year in Year, store in Store} 2*d[i,year,store]*(1/7);       		#Demand for shoe i                                         xxx
 
 var x{I,W} >= 0 integer;       #Amount of pairs of shoe i stored in warehouse w
 var y{W} binary;               #State of warehouse w (1 if open, 0 if closed)
@@ -28,4 +28,4 @@ maximize profit :
 s.t. co1 {w in W}: sum{i in I} x[i,w] <= C[w]*y[w];	                     #Warehouse capacity constraint
 s.t. co2 {i in I}: sum{w in W} x[i,w] <= D[i]; 				             #Demand constraint
 s.t. co3 {j in J}: sum{i in I, w in W} t[i,j]*x[i,w] <= 1209600;		 #Machine time constraint in seconds
-s.t. co4 : sum{i in I, j in J, w in W} c[j]*a[i,j]*x[i,w] <= 10000000;   #Budget constraint
+s.t. co4 : sum{i in I, k in K, w in W} c[k]*a[i,k]*x[i,w] <= 10000000;   #Budget constraint
