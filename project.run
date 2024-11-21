@@ -1,0 +1,56 @@
+reset;
+
+printf("Start...\n\n");
+
+model project.mod;
+
+printf("Loaded model...\n\n");
+
+data project.dat;
+
+printf("Loaded data...\n\n");
+
+option solver gurobi;
+
+solve;
+
+printf("Solving...\n\n");
+
+
+for{i in I}{
+	printf(D[i]);
+	printf(": ");
+	printf((sum{w in W} x[i,w]));
+	printf("\n");
+	
+	printf("Warehouse stuff: ");
+	
+	printf("\n");
+	
+	for{w in W}{
+		printf("Shoe stored in W number: ");
+		printf(w);
+		printf("are:" );
+		printf(x[i,w]);
+		printf("\n");
+		}
+	}
+
+printf("Shoes of type i stored in each warehouse");
+printf("\n");
+
+for{w in W}{
+	printf("WAREHOUSE----------------------");
+	printf(w);
+	printf("\n");
+	for{i in I}{
+		if x[i,w] > 0 then
+			printf(i);
+			printf("\n");
+		}
+	}
+	
+	
+
+display profit, x, y, x.rc, co1.dual, co2.dual, co3.dual, co4.dual, co1.slack, co2.slack, co3.slack, co4.slack > project.out;
+close project.out;
