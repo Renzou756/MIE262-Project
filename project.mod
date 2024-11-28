@@ -22,8 +22,8 @@ var y{W} binary;               #State of warehouse w (1 if open, 0 if closed)
 maximize profit :
 
 (sum{i in I, w in W} s[i]*x[i,w])   			                    #revenue
-- 25*(sum{i in I, j in J, w in W} t[i,j]*x[i,w]*(1/3600))           #workers cost
-- (sum{i in I, k in K, w in W} c[k]*a[i,k]*x[i,w])                  #raw material cost
+- 25*(sum{j in J, i in I, w in W} t[i,j]*x[i,w]*(1/3600))           #workers cost
+- (sum{k in K, i in I, w in W} c[k]*a[i,k]*x[i,w])                  #raw material cost
 - (sum{i in I} (10 - D[i]-(sum{w in W}x[i,w]) ) )                   #demand cost
 - (sum{w in W} y[w]*p[w])                                           #warehouse cost
 - (sum{j in J} H[j]*(sum{i in I, w in W}t[i,j]*x[i,w]*(1/60)));      #operating cost                  
