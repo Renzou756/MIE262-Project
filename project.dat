@@ -12,7 +12,7 @@ read table table3;
 
 
 table table4 "ODBC" "WARP2011W.mdb" "Machine_Master":
-	J <- [Machine_Num];
+	J <- [Machine_Num], H ~ OpCost_per_min;
 read table table4;
 
 
@@ -22,7 +22,7 @@ read table table5;
 
 
 table table6 "ODBC" "WARP2011W.mdb" "RM_Master":
-	K <- [RM_Num], c ~ Cost;
+	K <- [RM_Num], c ~ Cost, A ~ S_Quantity;
 read table table6;
 
 
