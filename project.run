@@ -17,71 +17,11 @@ solve;
 printf("Solving...\n\n");
 
 
-for{i in I}{
-	printf(D[i]);
-	printf(": ");
-	printf((sum{w in W} x[i,w]));
+for{k in K}{
+	printf(k);	
 	printf("\n");
-	
-	printf("Warehouse stuff: ");
-	
-	printf("\n");
-	
-	for{w in W}{
-		printf("Shoe stored in W number: ");
-		printf(w);
-		printf("are:" );
-		printf(x[i,w]);
-		printf("\n");
-		}
-	}
-
-printf("Shoes of type i stored in each warehouse");
-printf("\n");
-
-for{w in W}{
-	printf("WAREHOUSE----------------------");
-	printf(w);
-	printf("\n");
-	for{i in I}{
-		if x[i,w] > 0 then
-			printf(i);
-			printf("\n");
-		}
-	}
-	
-# Demand constraint
-printf("Checking demand constraint\n");
-for {i in I}{
-	if (co2[i].slack ==0) then
-		printf("Shoe type %s is binding\n"), i;
 }
-# Warehouse Capacaity
-printf("Check warehouse constraints\n");
-for {w in W}{
-	if  (co1[w].slack == 0) then
-		printf("Warehouse %s is binding\n"), w;
-}
-# Machine Time constraints
-printf("Checking Machine time constraints\n");
-for {j in J}{
-	if (co3[j].slack == 0) then
-		printf("Machine %s is binding\n"), j;
-}
-# Budget constraint
-printf("Check budget constraint\n");
-if (co4.slack == 0) then
-	printf("Budget is binding\n");
-
-
-# Material Constraint
-printf("Checking material constraint\n");
-for {k in K}{
-	if (co5[k].slack == 0) then
-		printf("Raw material %s is binding\n"), k;
-}
-
 	
 
-display profit, x, y, x.rc, co1.dual, co2.dual, co3.dual, co4.dual, co1.slack, co2.slack, co3.slack, co4.slack > project.out;
+display profit, x, y, x.rc, co1.dual, co2.dual, co3.dual, co4.dual, co5.dual, co1.slack, co2.slack, co3.slack, co4.slack, co5.slack > project.out;
 close project.out;
