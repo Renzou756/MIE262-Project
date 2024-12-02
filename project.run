@@ -16,7 +16,7 @@ solve;
 
 printf("Solving...\n\n");
 
-
+# Print raw materials
 for{k in K}{
 	printf(k);	
 	printf("\n");
@@ -50,7 +50,8 @@ for {k in K}{
 	if (co5[k].slack == 0) then
 		printf("Raw material %s is binding\n"), k;
 }
-	
+
+# Print warehouse capactities
 #for {w in W}{
 #	print(sum{i in I} x[i,w]);
 #}
