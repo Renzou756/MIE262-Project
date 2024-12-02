@@ -1,3 +1,4 @@
+# Declare sets, parameters, variables
 set I;      									  #Index of shoe type
 set J;        									  #Index of machine
 set K;   	  									  #Index of raw material
@@ -21,6 +22,7 @@ var y{W} binary;               #State of warehouse w (1 if open, 0 if closed)
  
 maximize profit :
 
+# Objective function
 (sum{i in I, w in W} s[i]*x[i,w])   			                    #revenue
 - 25*(sum{j in J, i in I, w in W} t[i,j]*x[i,w]*(1/3600))           #workers cost
 - (sum{k in K, i in I, w in W} c[k]*a[i,k]*x[i,w])                  #raw material cost
@@ -28,6 +30,7 @@ maximize profit :
 - (sum{w in W} y[w]*p[w])                                           #warehouse cost
 - (sum{j in J} H[j]*(sum{i in I, w in W}t[i,j]*x[i,w]*(1/60)));      #operating cost                  
 
+# Constraints
 s.t. co1 {w in W}: sum{i in I} x[i,w] <= C[w]*y[w];	                       #Warehouse capacity constraint
 s.t. co2 {i in I}: sum{w in W} x[i,w] <= D[i]; 				               #Demand constraint
 s.t. co3 {j in J}: sum{i in I, w in W} t[i,j]*x[i,w] <= 1209600;		   #Machine time constraint in seconds
