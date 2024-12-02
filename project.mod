@@ -22,7 +22,7 @@ var y{W} binary;               #State of warehouse w (1 if open, 0 if closed)
  
 maximize profit :
 
-# Objective function
+# Objective function: Revenue - worker cost - material cost - demand cost - warehouse cost - machine operating cost
 (sum{i in I, w in W} s[i]*x[i,w])   			                    #revenue
 - 25*(sum{j in J, i in I, w in W} t[i,j]*x[i,w]*(1/3600))           #workers cost
 - (sum{k in K, i in I, w in W} c[k]*a[i,k]*x[i,w])                  #raw material cost
