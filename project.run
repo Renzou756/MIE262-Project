@@ -28,7 +28,7 @@ for {i in I}{
 	if (co2[i].slack ==0) then
 		printf("Shoe type %s is binding\n"), i;
 }
-# Warehouse Capacaity
+# Warehouse Capacity
 printf("Check warehouse constraints\n");
 for {w in W}{
 	if  (co1[w].slack == 0) then
@@ -51,7 +51,7 @@ for {k in K}{
 		printf("Raw material %s is binding\n"), k;
 }
 
-# Print warehouse capactities
+# Print warehouse capacities
 #for {w in W}{
 #	print(sum{i in I} x[i,w]);
 #}
