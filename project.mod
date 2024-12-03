@@ -1,3 +1,6 @@
+#Ethan_Jan_wangja54_1010123331
+#Renzo_UgarteBasurco_ugartere_1010331570
+
 # Declare sets, parameters, variables
 set I;      									  #Index of shoe type
 set J;        									  #Index of machine
