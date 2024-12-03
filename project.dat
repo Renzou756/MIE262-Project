@@ -1,3 +1,6 @@
+#Ethan_Jan_wangja54_1010123331
+#Renzo_UgarteBasurco_ugartere_1010331570
+
 table table1 "ODBC" "WARP2011W.mdb" "Product_Master":       #Setting set of shoe types and sales price parameter
 	I <- [Product_Num], s ~ Sales_Price;                
 read table table1;
@@ -11,23 +14,23 @@ table table3 "ODBC" "WARP2011W.mdb" "Warehouse_Master":     #Setting the set of 
 read table table3;
 
 
-table table4 "ODBC" "WARP2011W.mdb" "Machine_Master":
+table table4 "ODBC" "WARP2011W.mdb" "Machine_Master":       #Operating cost per min
 	J <- [Machine_Num], H ~ OpCost_per_min;
 read table table4;
 
 
 table table5 "ODBC" "WARP2011W.mdb" "Machine_Assign":
-	[Product_Num, Machine_Num] , t ~ Avg_Duration;
+	[Product_Num, Machine_Num] , t ~ Avg_Duration;        #Average duration per shoe per machine
 read table table5;
 
 
-table table6 "ODBC" "WARP2011W.mdb" "RM_Master":
+table table6 "ODBC" "WARP2011W.mdb" "RM_Master":		#Quantity of raw material available to purchase
 	K <- [RM_Num], c ~ Cost, A ~ S_Quantity;
 read table table6;
 
 
 table table7 "ODBC" "WARP2011W.mdb" "BOM":
-	[Product_Num, RM_Num], a ~ Quantity;
+	[Product_Num, RM_Num], a ~ Quantity;				#Quantity of raw material per shoe type i
 read table table7;
 
 	
